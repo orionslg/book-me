@@ -1,6 +1,6 @@
 class IndexController {
     static renderIndexPage(req, res) {
-        res.send('index')
+        res.render('index')
     }
 }
 

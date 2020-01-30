@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const GuestController = require('../controllers/guest');
+const Auth = require('../middlewares/auth');
 
 // create and read
-router.get('/', GuestController.renderCreatePage);
-router.post('/', GuestController.create);
+router.get('/', Auth.isLogin, GuestController.renderCreatePage);
+router.post('/', Auth.isLogin, GuestController.create);
 
 module.exports = router;

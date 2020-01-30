@@ -47,7 +47,9 @@ class GuestController {
                     data,
                     currencyFormat: Helper.currencyFormat,
                     optionFormat: Helper.optionFormat,
-                    error
+                    error,
+                    // admin: req.session.role
+                    admin: req.session.login
                 })
 
             })

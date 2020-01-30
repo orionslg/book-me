@@ -6,7 +6,19 @@ module.exports = (sequelize, DataTypes) => {
 
   Hotel.init({
     name: DataTypes.STRING,
-    room_stock: DataTypes.INTEGER,
+    room_stock: {
+      type: DataTypes.INTEGER,
+      validate: {
+        max: {
+          args: 1000,
+          msg: 'Cannot exceed 1000 rooms'
+        },
+        min: {
+          args: 1,
+          msg: 'Hotel must has a room'
+        }
+      }
+    },
     address: DataTypes.STRING,
     price: DataTypes.INTEGER
   },

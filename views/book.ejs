@@ -9,10 +9,16 @@
 </head>
 
 <body>
+    <a href="/logout">Logout</a>
     <% if (error) { %>
     <h2><%= error %> </h2>
     <% } %>
-    <%- include('partials/form') %>
+
+    <% if (admin) { %>
+        <%- include('partials/formAdmin') %> 
+     <% } else { %>
+        <%- include('partials/formUser') %>
+    <% } %>
 
     <br>
 
@@ -38,6 +44,9 @@
                 <td>Available Room</td>
                 <td>Rating</td>
                 <td>Price</td>
+                <% if (admin) { %>
+                 <td>Action</td>
+                <% } %>
             </tr>
         </thead>
         <tbody>
@@ -49,6 +58,13 @@
                 <td><%= el.room_stock %> </td>
                 <td><%= el.avgRating %> </td>
                 <td><%= currencyFormat(el.price) %> </td>
+                <!-- if (admin === 'admin') -->
+                <% if (admin) { %>
+                 <td>
+                     <a href="/hotel/<%= el.id %>/edit">Edit</a> |
+                     <a href="/hotel/<%= el.id %>/delete">Delete</a>
+                 </td>
+                <% } %>
             </tr>
             <% }) %>
         </tbody>

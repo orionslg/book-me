@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BookMe</title>
+</head>
+
+<body>
+    <% if (error) { %>
+    <h2><%= error %> </h2>
+    <% } %>
+    <%- include('partials/form') %>
+
+    <br>
+
+    <form action="/book" method="get">
+        <select name="sortBy">
+            <option value="price">Price</option>
+            <option value="rating">Rating</option>
+            <option value="room">Room Stock</option>
+        </select>
+        <select name="sortType">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+        <input type="submit" value="Sort!">
+    </form>
+    <br>
+    <table border="1px" style="width: 100%;">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Address</td>
+                <td>Available Room</td>
+                <td>Rating</td>
+                <td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(el => { %>
+            <tr>
+                <td><%= el.id %> </td>
+                <td><%= el.name %> </td>
+                <td><%= el.address %> </td>
+                <td><%= el.room_stock %> </td>
+                <td><%= el.avgRating %> </td>
+                <td><%= currencyFormat(el.price) %> </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+
+</html>

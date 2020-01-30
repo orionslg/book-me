@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BookMe!</title>
+</head>
+<body>
+    <% if (error) { %>
+     <h1><%= error %></h1>
+    <% } %>
+    <form action="/hotel/<%= data.id %>/edit" method="post">
+        Name: <input type="text" name="name" value="<%= data.name %>"><br>
+        Room stock: <input type="number" name="room_stock" value="<%= data.room_stock %>"><br>
+        Address: <input type="text" name="address" value="<%= data.address %>"><br>
+        Price: <input type="number" name="price" value="<%= data.price %>"><br>
+        <input type="submit" value="Update!">
+    </form>
+</body>
+</html>

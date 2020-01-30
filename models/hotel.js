@@ -26,10 +26,12 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       hooks: {
         afterFind(user, options) {
-          user.forEach(el => {
-            el.name = `Hotel ${el.name}`;
-            el.address = `Jl. ${el.address}`;
-          })
+          if (Array.isArray(user)) {
+            user.forEach(el => {
+              el.name = `Hotel ${el.name}`;
+              el.address = `Jl. ${el.address}`;
+            })
+          }
         }
       }
     })

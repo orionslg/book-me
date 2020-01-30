@@ -14,6 +14,21 @@
     <% } %>
     <%- include('partials/form') %>
 
+    <br>
+
+    <form action="/book" method="get">
+        <select name="sortBy">
+            <option value="price">Price</option>
+            <option value="rating">Rating</option>
+            <option value="room">Room Stock</option>
+        </select>
+        <select name="sortType">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+        <input type="submit" value="Sort!">
+    </form>
+    <br>
     <table border="1px" style="width: 100%;">
         <thead>
             <tr>

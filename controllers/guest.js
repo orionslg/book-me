@@ -26,14 +26,30 @@ class GuestController {
                     else hotel.avgRating = 0;
                 })
                 const error = req.query.error;
+                const sortType = req.query.sortType;
+                switch (req.query.sortBy) {
+                    case "price":
+                        if (sortType === 'asc') data.sort((a, b) => a.price - b.price);
+                        else data.sort((a, b) => b.price - a.price)
+                        break;
+                    case "room":
+                        if (sortType === 'asc') data.sort((a, b) => a.room_stock - b.room_stock);
+                        else data.sort((a, b) => b.room_stock - a.room_stock)
+                        break;
+                    case "rating":
 
-                // res.send(data)
+                        if (sortType === 'asc') data.sort((a, b) => a.avgRating - b.avgRating);
+                        else data.sort((a, b) => b.avgRating - a.avgRating)
+                        break;
+
+                }
                 res.render('book', {
                     data,
                     currencyFormat: Helper.currencyFormat,
                     optionFormat: Helper.optionFormat,
                     error
                 })
+
             })
             .catch(err => {
                 console.log(err); res.send(err);

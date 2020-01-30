@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {Hotel, Guest, Rating} = require('../models')
+const routerGuest = require('./guest');
+const IndexController = require('../controllers/index');
 
-router.get('/')
+router.get('/', IndexController.renderIndexPage);
+router.use('/book', routerGuest);
 
 module.exports = router;

@@ -1,0 +1,14 @@
+<form action="/book" method="post">
+    Name: <input type="text" name="name"> <br>
+    Total Room : <input type="number" name="total_room"> <br>
+    Hotel:
+    <select name="HotelId">
+        <!-- looping data -->
+        <% data.forEach(el => { %>
+        <option value="<%= el.id %>"><%= optionFormat(el) %> </option>
+        <% }) %>
+    </select> <br>
+    <input type="submit" value="BookMe!">
+
+
+</form>

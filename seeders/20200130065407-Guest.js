@@ -10,22 +10,26 @@ module.exports = {
       */
     const data = [
       {
-        name: "Orion",
+        name: "Budi",
         total_room: 5,
         checkout: false,
+        email: "budi@bookme.com",
+        password: "budi123",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: "Ulrich",
+        name: "Cici",
         total_room: 10,
         checkout: true,
+        email: "cici@bookme.com",
+        password: "cici123",
         createdAt: new Date(),
         updatedAt: new Date()
       }
     ]
 
-        return queryInterface.bulkInsert('Guests', data, {});
+    return queryInterface.bulkInsert('Guests', data, {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -35,6 +39,6 @@ module.exports = {
 
       Example:
       */
-     return queryInterface.bulkDelete('Guests', null, {});
+    return queryInterface.bulkDelete('Guests', null, {});
   }
 };

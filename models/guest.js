@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
   Guest.init({
     name: DataTypes.STRING,
     total_room: DataTypes.INTEGER,
-    checkout: DataTypes.BOOLEAN
+    checkout: DataTypes.BOOLEAN,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
   }, {
     sequelize
   })

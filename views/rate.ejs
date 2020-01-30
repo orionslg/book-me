@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BookMe</title>
+</head>
+
+<body>
+    <a href="/book">Back</a> <br>
+    <form action="/book/<%= guestId %>/rate" method="post">
+        Hotel:
+        <select name="hotelId">
+            <% data.forEach(el => { %>
+            <div>
+                <option value="<%= el.id %>"><%= el.name %> </option>
+            </div>
+            <% }) %>
+        </select><br>
+        Rating: <input type="number" name="rating" min="1" max="10"><br>
+        <input type="submit" value="Rate Me!">
+    </form>
+</body>
+
+</html>

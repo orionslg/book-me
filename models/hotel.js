@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Model = sequelize.Sequelize.Model;
 
-  class Hotel extends Model {}
+  class Hotel extends Model { }
 
   Hotel.init({
     name: DataTypes.STRING,
@@ -22,11 +22,19 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     price: DataTypes.INTEGER
   },
-  {
-    sequelize
-  })
+    {
+      sequelize,
+      hooks: {
+        afterFind(user, options) {
+          user.forEach(el => {
+            el.name = `Hotel ${el.name}`;
+            el.address = `Jl. ${el.address}`;
+          })
+        }
+      }
+    })
 
-  Hotel.associate = function(models) {
+  Hotel.associate = function (models) {
     // associations can be defined here
     Hotel.hasMany(models.Rating);
   };
